@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .bg-img
+        {
+            background: url('bg.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-img:after
+        {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            
+        }
+        .content
+        {
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            z-index: 999;
+            width: 450px;
+            text-align: center;
+            padding: 60px 32px;
+            background:rgba(20, 20, 19, 0.4);
+            box-shadow: -1px 4px 28px 0px rgba(17, 23, 31, 0.877);
+        }
+
+        .content header
+        {
+            color: white;
+            font-size: 30px;
+            font-weight: 600;
+            margin: 0 0 35px 0;
+            font-family: 'Montserrat',sans-serif;
+        }
+
+        .field
+        {
+            position: relative;
+            height: 45px;
+            width: 100%;
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .field span{
+            color: #222;
+            width: 200px;
+            line-height: 45px;
+        }
+
+        .field input
+        {
+            height: 100%;
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #222;
+            font-size: 16px;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        .space
+        {
+            margin-top: 16px;
+        }
+
+        .pass
+        {
+            text-align: left;
+            margin: 10px 0;
+        }
+        .pass a
+        {
+            color: white;
+            font-family: 'Poppins',sans-serif;
+            text-decoration: none;
+        }
+        .pass:hover a
+        {
+            text-decoration: underline;
+        }
+        input[type="submit"]
+        {
+            height: 40px;
+            width: 80px;
+            background: #3498db;
+            border: 1px solid #2691d9;
+            color: white;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat',sans-serif;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        
+        input[type="submit"]:hover
+        {
+            background: #09446b;;
+        }
+
+        .signup
+        {
+            color: white;
+            font-size: 15px;
+            font-family:'Poppins',sans-serif ;
+        }
+        .signup a
+        {
+            color:#3498db;
+            text-decoration: none;
+        }
+        .signup a:hover
+        {
+            text-decoration: underline;
+        }
+        .imsg
+        {
+            font-size: 10px;
+            color: white;
+        }
+        
+    </style>
+    <script>
+        //onfocus（焦点聚焦事件）、onblur（焦点离开事件）、onkeyup（按键抬起的事件）
+    function shoeTips(spanId,tips)
+    {
+        var span = document.getElementById(spanId);
+	    span.innerHTML = tips;
+    }
+
+    //验证账号
+    function checkUser()
+    {
+        var value = document.getElementById("value").value;
+        var user = document.getElementById("user");
+        //reg = /(\w+){6,20}/;
+        //
+        if(value.length<6||value.length>20)
+        {
+            user.innerHTML = "账号不合法";
+            return false;
+        }
+        else
+        {
+            user.innerHTML = "格式正确";
+            return true;
+        }
+    }
+    function user_hide()
+    {
+        var user = document.getElementById("user");
+        user.innerHTML = "";
+    }
+
+    //验证密码
+    function checkPass()
+    {
+        var value = document.getElementById("pass_value").value;
+        var pass = document.getElementById("pass_hint");
+        if(value.length<5||value.length>15)
+        {
+            pass.innerHTML = "密码不合法";
+            return false;
+        }
+        else
+        {
+            pass.innerHTML = "格式正确";
+            return true;
+        }
+    }
+    function pass_hide()
+    {
+        var pass = document.getElementById("pass_hint");
+        pass.innerHTML = "";
+    }
+    function verfiyLogin()
+    {
+        if(checkPass()&&checkUser())
+            return true;
+        else
+            return false;
+            
+    }
+    </script>
+</head>
+<body background="images\IndexImage\bg1.jpg">
+    <div class="bg-img">
+        <div class="content">
+            <header>管 理 员 登 录</header>
+                <form action="Administrator.html" method="post" onsubmit ="return verfiyLogin()">
+                <div class="field">
+                    <input  type="text" required placeholder="  账号" id="value" onfocus="shoeTips('user','账号长度为6-20位')"
+                    onblur="user_hide()" onkeyup="checkUser()"  Name="Userame"  />
+                    <span id="user"></span>
+                </div>
+                <div class="field space">
+
+                    <input type="password" required placeholder="  密码" id="pass_value" onfocus="shoeTips('pass_hint','密码长度为5-15位')" 
+                    onblur="pass_hide()" onkeyup="checkPass()"   name="password"  />
+                    <span id="pass_hint"></span>
+                </div>
+                
+                <div>
+                    <input type="submit" value="登录">
+                </div>
+                
+                
+            </form>
+            <form action="Login.jsp" method="post">
+                <input type="submit" value="返回">
+            </form>
+            
+        </div>
+    </div>
+</body>
+</html>

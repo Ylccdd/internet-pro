@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <title>Document</title>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+	        initfoodsize();
+	        $('.fold-food').click(function()
+            {
+                $fold = $(this).parent();
+                $('.fold-food').removeClass('selected');
+                $('.fold-food a').removeClass('arrow-open').addClass('arrow-close');
+                $('ul', $('.fold').not($fold)).hide();
+                    if($('ul', $fold).css('display') == 'none')
+                    {
+                        $('ul', $fold).show();
+                        $(this).addClass('selected');
+                        $('a', this).removeClass('arrow-close').addClass('arrow-open');
+                    }else{
+                        $('ul', $fold).hide();
+                    }
+	        });
+ 
+            $('.fold li a').click(function(){
+            $('.fold li a.indexed').removeClass('indexed');
+            $(this).addClass('indexed');
+    
+            // 这里做页面切换提交
+            var id = $(this).attr('title');
+	        });
+        });
+ 
+        $(window).resize(function(){
+            initfoodsize();
+        });
+        
+        function initfoodsize(){
+            $("#container_left").height($(window).height());
+        }
+    </script>
+</head>
+
+
+<body style="background-color: cornsilk;">
+    <div class="user-info">
+        <img src="images/IndexImage/head2.jpg" class="head_image">
+        <p class="p1">Michael</p>
+        <p class="p2">Administrator</p>
+        <hr>
+    </div>
+
+    <div class="menu">
+        <div id="container_left">
+            <!-- 这里生成树形菜单 -->
+
+            <div class="fold">
+                <dl class="fold-food"><a href="javascript:void(0);" class="arrow-close">menu 1</a></dl>
+                <ul>
+                    <li class="dotted"><a href="userlist.html" target="main" title='1'>file1</a></li>
+                </ul>
+                <ul>
+                    <li class="dotted"><a href="javascript:void(0);" title='2'>file2</a></li>
+                </ul>
+                <ul>
+                    <li class="solid"><a href="javascript:void(0);" title='3'>file3</a></li>
+                </ul>
+            </div>
+            <div class="fold">
+                <dl class="fold-food"><a href="javascript:void(0);" class="arrow-close">menu 2</a></dl>
+                <ul>
+                    <li class="dotted"><a href="javascript:void(0);" title='4'>file4</a></li>
+                </ul>
+                <ul>
+                    <li class="solid"><a href="javascript:void(0);" title='5'>file5</a></li>
+                </ul>
+            </div>
+            <div class="fold">
+                <dl class="fold-food"><a href="javascript:void(0);" class="arrow-close">menu 3</a></dl>
+                <ul>
+                    <li class="dotted"><a href="javascript:void(0);" title='6'>file6</a></li>
+                </ul>
+                <ul>
+                    <li class="dotted"><a href="javascript:void(0);" title='7'>file7</a></li>
+                </ul>
+                <ul>
+                    <li class="solid"><a href="javascript:void(0);" title='8'>file8</a></li>
+                </ul>
+            </div>
+            <div class="fold">
+                <dl class="fold-food"><a href="javascript:void(0);" class="arrow-close">menu 4</a></dl>
+                <ul>
+                    <li class="solid"><a href="javascript:void(0);" title='9'>file9</a></li>
+                </ul>
+            </div>
+            <div class="fold">
+                <dl class="fold-food"><a href="javascript:void(0);" class="arrow-close">menu 5</a></dl>
+                <ul>
+                    <li class="dotted"><a href="javascript:void(0);" title='10'>file10</a></li>
+                </ul>
+                <ul>
+                    <li class="solid"><a href="javascript:void(0);" title='11'>file11</a></li>
+                </ul>
+            </div>
+            <div class="fold">
+                <dl class="fold-food"><a href="javascript:void(0);" class="arrow-close">menu 5</a></dl>
+                <ul>
+                    <li class="dotted"><a href="javascript:void(0);" title='10'>file10</a></li>
+                </ul>
+                <ul>
+                    <li class="solid"><a href="javascript:void(0);" title='11'>file11</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

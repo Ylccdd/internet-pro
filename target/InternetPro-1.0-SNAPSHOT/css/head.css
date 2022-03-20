@@ -1,0 +1,37 @@
+.person{
+    color: white;
+    position: relative;
+    float: left;
+    font-size: 15px;
+    margin-left: 18%;
+    margin-top: -2.5%;
+    text-decoration: none;
+}
+.quit{
+    color: white;
+    position: relative;
+    float: right;
+    font-size: 18px;
+    margin-right: 0%;
+    margin-top: -3%;
+    text-decoration: none;
+}
+.help
+{
+    color: white;
+    position: relative;
+    float: right;
+    font-size: 18px;
+    margin-right: 10%;
+    margin-top: -3%;
+    text-decoration: none;
+}
+.person :hover{
+    color: rgb(193, 206, 157);
+}
+.help :hover{
+    color: rgb(193, 206, 157);
+}
+.quit :hover{
+    color: rgb(193, 206, 157);
+}
